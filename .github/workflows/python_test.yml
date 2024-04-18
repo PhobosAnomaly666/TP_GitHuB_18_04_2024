@@ -1,0 +1,21 @@
+name: Tests du script
+
+on: [push]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Récupération du code source dans le dépôt
+      uses: actions/checkout@v2
+      
+    - name: Initialisation de Python pour le test
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+      
+    - name: Tests de fonctionnement
+      run: |
+        python -m unittest tests/test_password_generator.py
